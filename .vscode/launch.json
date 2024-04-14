@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/app",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "sourceFileMap": { "/source": "${workspaceFolder}" },
+            "pipeTransport": {
+                "debuggerPath": "/usr/bin/gdb",
+                "pipeProgram": "/usr/bin/sshpass",
+                "pipeArgs": [
+                    "-p",
+                    "root",
+                    "ssh",
+                    "root@localhost",
+                    "-p",
+                    "2222"
+                ],
+                "pipeCwd": ""
+            },
+            "MIMode": "gdb",
+            "preLaunchTask": "build"
+        }
+    ],
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-o",
+                "${workspaceFolder}/build/app",
+                "${workspaceFolder}/src/*.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
