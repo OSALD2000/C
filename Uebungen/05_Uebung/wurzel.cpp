@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cmath>
 #include <array>
-#include <iomanip> 
+#include <iomanip>
+#define calcuateA(a, b) ((a + b)/2)
 
-
-long double calcuateA(double a, double b)
-{
-    return (a + b)/2;
-}
+#ifdef __linux__
+    #define MYSYS std::cout << "Code for Linux Rechner! \n";
+#endif
 
 
 
@@ -41,6 +40,7 @@ int main()
     long double a = 0.0;
     long double b = 0.0;
 
+    MYSYS
     std::cout << "Hallo geben Sie eine Zahl ein !!" << std::endl;
     std::cin >> x;
     
